@@ -1,0 +1,4 @@
+.header-nav a.active {
+  @apply text-primary-600 dark:text-primary-400;
+}
+

@@ -1,0 +1,161 @@
+<div class="min-h-screen pt-20 md:pt-24 pb-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Page Header -->
+    <div class="text-center mb-12 resume-title">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        My <span class="text-gradient">Resume</span>
+      </h1>
+      <button
+        (click)="downloadResume()"
+        class="mt-6 px-8 py-3 bg-gradient-to-r from-primary-500 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105"
+      >
+        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        Download Resume
+      </button>
+    </div>
+
+    <!-- Resume Content -->
+    <div class="max-w-4xl mx-auto">
+      <div class="glass-effect rounded-2xl p-8 md:p-12 space-y-12 resume-section">
+        <!-- Personal Info -->
+        <div class="text-center border-b border-gray-200 dark:border-gray-700 pb-8">
+          <h2 class="text-4xl font-bold mb-2">{{ personalInfo.name }}</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400 mb-4">{{ personalInfo.title }}</p>
+          <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+            <span>{{ personalInfo.email }}</span>
+            <span>•</span>
+            <span>{{ personalInfo.phone }}</span>
+            <span>•</span>
+            <span>{{ personalInfo.location }}</span>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="resume-section">
+          <h3 class="text-2xl font-bold mb-4 text-gradient">Summary</h3>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+            {{ summary }}
+          </p>
+        </div>
+
+        <!-- Experience -->
+        <div class="resume-section">
+          <h3 class="text-2xl font-bold mb-6 text-gradient">Experience</h3>
+          <div class="space-y-8">
+            <div *ngFor="let exp of experiences" class="border-l-4 border-primary-500 pl-6">
+              <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                <h4 class="text-xl font-bold">{{ exp.position }}</h4>
+                <span class="text-primary-600 dark:text-primary-400 font-semibold">{{ exp.startDate }} - {{ exp.endDate }}</span>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 mb-3 font-medium">{{ exp.company }} • {{ exp.location }}</p>
+              <p class="text-gray-500 dark:text-gray-500 text-sm mb-4">{{ exp.duration }}</p>
+              <ul class="space-y-2 mb-4">
+                <li *ngFor="let responsibility of exp.responsibilities" class="flex items-start">
+                  <svg class="w-5 h-5 text-primary-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-700 dark:text-gray-300">{{ responsibility }}</span>
+                </li>
+              </ul>
+              <div *ngIf="exp.achievements && exp.achievements.length > 0" class="mt-4">
+                <p class="font-semibold text-gray-900 dark:text-white mb-2">Key Achievements:</p>
+                <ul class="space-y-2">
+                  <li *ngFor="let achievement of exp.achievements" class="flex items-start">
+                    <svg class="w-5 h-5 text-primary-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="text-gray-700 dark:text-gray-300">{{ achievement }}</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span *ngFor="let tech of exp.technologies" class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs">
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="resume-section">
+          <h3 class="text-2xl font-bold mb-6 text-gradient">Skills</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-3 text-gray-900 dark:text-white">Frontend</h4>
+              <div class="flex flex-wrap gap-2">
+                <span *ngFor="let skill of skillsByCategory.frontend" class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm">
+                  {{ skill }}
+                </span>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-3 text-gray-900 dark:text-white">Backend</h4>
+              <div class="flex flex-wrap gap-2">
+                <span *ngFor="let skill of skillsByCategory.backend" class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm">
+                  {{ skill }}
+                </span>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-3 text-gray-900 dark:text-white">Tools</h4>
+              <div class="flex flex-wrap gap-2">
+                <span *ngFor="let skill of skillsByCategory.tools" class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm">
+                  {{ skill }}
+                </span>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-3 text-gray-900 dark:text-white">Other</h4>
+              <div class="flex flex-wrap gap-2">
+                <span *ngFor="let skill of skillsByCategory.other" class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm">
+                  {{ skill }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="resume-section">
+          <h3 class="text-2xl font-bold mb-6 text-gradient">Education</h3>
+          <div class="space-y-4">
+            <div *ngFor="let edu of education" class="border-l-4 border-primary-500 pl-6">
+              <h4 class="text-xl font-bold">{{ edu.degree }}</h4>
+              <p class="text-gray-600 dark:text-gray-400">{{ edu.institution }}</p>
+              <p class="text-gray-500 dark:text-gray-500 text-sm">{{ edu.year }} • {{ edu.duration }}</p>
+              <p *ngIf="edu.field" class="text-gray-500 dark:text-gray-500 text-sm">{{ edu.field }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div *ngIf="certifications.length > 0" class="resume-section">
+          <h3 class="text-2xl font-bold mb-6 text-gradient">Certifications</h3>
+          <div class="space-y-4">
+            <div *ngFor="let cert of certifications" class="border-l-4 border-primary-500 pl-6">
+              <h4 class="text-xl font-bold">{{ cert.name }}</h4>
+              <p class="text-gray-600 dark:text-gray-400">{{ cert.issuer }}</p>
+              <p *ngIf="cert.date" class="text-gray-500 dark:text-gray-500 text-sm">{{ cert.date }}</p>
+              <p *ngIf="cert.credentialId" class="text-gray-500 dark:text-gray-500 text-sm">Credential ID: {{ cert.credentialId }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div *ngIf="languages.length > 0" class="resume-section">
+          <h3 class="text-2xl font-bold mb-6 text-gradient">Languages</h3>
+          <div class="flex flex-wrap gap-4">
+            <div *ngFor="let lang of languages" class="px-4 py-2 bg-primary-100 dark:bg-primary-900/30 rounded-lg">
+              <span class="font-semibold text-gray-900 dark:text-white">{{ lang.name }}</span>
+              <span class="text-gray-600 dark:text-gray-400 ml-2">- {{ lang.proficiency }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
