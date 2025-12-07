@@ -263,13 +263,29 @@ export class VoiceCommandService {
         console.log(`Executing command: ${command}`);
         voiceCommand.action();
         matched = true;
+        
+        // Track voice command (if analytics service is available)
+        if ((window as any).gtag) {
+          (window as any).gtag('event', 'voice_command', {
+            event_category: 'voice',
+            event_label: command,
+            value: 1
+          });
+        }
         break;
       }
     }
 
     if (!matched) {
       console.log('No matching command found for:', transcript);
-      // You can add a visual feedback here for unrecognized commands
+      // Track failed voice command
+      if ((window as any).gtag) {
+        (window as any).gtag('event', 'voice_command', {
+          event_category: 'voice',
+          event_label: transcript,
+          value: 0
+        });
+      }
     }
 
     // Reset status after processing

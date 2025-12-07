@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { GSAPAnimations } from '../../utils/gsap.animations';
+import { AnalyticsService } from '../../services/analytics.service';
 import { PortfolioData } from '../../portfolio-data';
 
 @Component({
@@ -21,7 +22,10 @@ export class ContactComponent implements OnInit, AfterViewInit {
   socialLinks = PortfolioData.socialLinks;
   contactEmail = PortfolioData.personalInfo.email;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private analyticsService: AnalyticsService
+  ) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -68,8 +72,12 @@ export class ContactComponent implements OnInit, AfterViewInit {
         if (success) {
           this.submitSuccess = true;
           this.contactForm.reset();
+          // Track successful form submission
+          this.analyticsService.trackFormSubmission('contact', 'success');
         } else {
           this.submitError = true;
+          // Track failed form submission
+          this.analyticsService.trackFormSubmission('contact', 'error');
         }
         
         this.isSubmitting = false;

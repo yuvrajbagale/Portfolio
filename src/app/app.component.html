@@ -1,4 +1,12 @@
 <div class="min-h-screen flex flex-col">
+  <!-- 3D Background -->
+  <app-three-background
+    [particleCount]="800"
+    [particleColor]="threeColor"
+    [enableRotation]="true"
+    [animationSpeed]="0.8"
+  ></app-three-background>
+
   <!-- Spider Web Cursor Animation -->
   <app-spider-web-cursor
     [particleCount]="60"

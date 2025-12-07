@@ -1,0 +1,14 @@
+.three-interactive-container {
+  position: relative;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.three-interactive-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+

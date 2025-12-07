@@ -1,0 +1,12 @@
+.three-logo-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.three-logo-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+

@@ -4,6 +4,7 @@ import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ThemeService } from '../../services/theme.service';
 import { LanguageService, Language } from '../../services/language.service';
+import { AnalyticsService } from '../../services/analytics.service';
 import { VoiceCommandComponent } from '../voice-command/voice-command.component';
 import { GSAPAnimations } from '../../utils/gsap.animations';
 import { filter, Subscription } from 'rxjs';
@@ -38,6 +39,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public themeService: ThemeService,
     public languageService: LanguageService,
     private translateService: TranslateService,
+    private analyticsService: AnalyticsService,
     private router: Router
   ) {}
 
@@ -83,6 +85,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   toggleTheme(): void {
     this.themeService.toggleTheme();
+    // Track theme toggle
+    this.analyticsService.trackThemeToggle(this.isDarkMode ? 'dark' : 'light');
   }
 
   toggleMenu(): void {
@@ -108,6 +112,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     console.log('Setting language to:', lang);
     this.languageService.setLanguage(lang);
     this.isLanguageMenuOpen = false;
+    // Track language change
+    this.analyticsService.trackLanguageChange(lang);
   }
 
   getLanguageName(lang: Language): string {
