@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { GSAPAnimations } from '../../utils/gsap.animations';
 import { gsap } from 'gsap';
 import { PortfolioData } from '../../portfolio-data';
@@ -8,7 +9,7 @@ import { PortfolioData } from '../../portfolio-data';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

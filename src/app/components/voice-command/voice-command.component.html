@@ -1,0 +1,42 @@
+<div class="voice-command-wrapper">
+  <button
+    *ngIf="isSupported"
+    (click)="toggleListening()"
+    [class.listening]="status === 'listening'"
+    [class.processing]="status === 'processing'"
+    [class.error]="status === 'error'"
+    class="voice-command-btn group relative"
+    [attr.aria-label]="getStatusText()"
+    [attr.aria-pressed]="status === 'listening'"
+    type="button"
+  >
+    <!-- Voice Icon -->
+    <div class="flex items-center space-x-2">
+      <span class="text-lg">{{ getStatusIcon() }}</span>
+      <span class="text-xs font-medium hidden sm:inline" [ngClass]="getStatusColor()">
+        {{ getStatusText() }}
+      </span>
+    </div>
+
+    <!-- Listening Animation -->
+    <div *ngIf="status === 'listening'" class="listening-pulse"></div>
+
+    <!-- Tooltip -->
+    <div class="voice-tooltip">
+      <p class="font-semibold mb-1">Available Commands:</p>
+      <ul class="text-xs space-y-0.5">
+        <li>• "Show projects"</li>
+        <li>• "Contact me"</li>
+        <li>• "Go home"</li>
+        <li>• "About"</li>
+        <li>• "Resume"</li>
+      </ul>
+    </div>
+  </button>
+
+  <!-- Not Supported Message -->
+  <div *ngIf="!isSupported" class="text-xs text-gray-500 dark:text-gray-400 px-2">
+    Voice commands not supported
+  </div>
+</div>
+

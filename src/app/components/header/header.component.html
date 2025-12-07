@@ -18,7 +18,7 @@
           [class.active]="isActive(link.path)"
           class="relative px-4 py-2 text-sm font-medium transition-colors duration-300 hover:text-primary-500 dark:hover:text-primary-400"
         >
-          {{ link.label }}
+          {{ link.label | translate }}
           <span
             *ngIf="isActive(link.path)"
             class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-500 rounded-full"
@@ -26,12 +26,56 @@
         </a>
       </div>
 
-      <!-- Theme Toggle & Mobile Menu Button -->
-      <div class="flex items-center space-x-4">
+      <!-- Voice Command, Language Switcher, Theme Toggle & Mobile Menu Button -->
+      <div class="flex items-center space-x-2">
+        <!-- Voice Command -->
+        <app-voice-command></app-voice-command>
+
+        <!-- Language Switcher -->
+        <div class="relative" #languageMenu>
+          <button
+            (click)="toggleLanguageMenu()"
+            class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center space-x-1"
+            [attr.aria-label]="'Language'"
+            [attr.aria-expanded]="isLanguageMenuOpen"
+            type="button"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
+            <span class="text-xs font-medium hidden sm:inline">{{ getLanguageName(currentLanguage) }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <!-- Language Dropdown -->
+          <div
+            *ngIf="isLanguageMenuOpen"
+            class="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50"
+          >
+            <button
+              *ngFor="let lang of supportedLanguages"
+              (click)="setLanguage(lang)"
+              type="button"
+              [ngClass]="{
+                'bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400': currentLanguage === lang
+              }"
+              class="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center justify-between"
+            >
+              <span>{{ getLanguageName(lang) }}</span>
+              <svg *ngIf="currentLanguage === lang" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
         <button
           (click)="toggleTheme()"
           class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-          aria-label="Toggle theme"
+          [attr.aria-label]="'Toggle theme'"
         >
           <svg *ngIf="!isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
@@ -68,7 +112,7 @@
         [class.active]="isActive(link.path)"
         class="block px-4 py-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 font-medium"
       >
-        {{ link.label }}
+        {{ link.label | translate }}
       </a>
     </div>
   </nav>

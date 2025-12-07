@@ -1,0 +1,27 @@
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.pwa-install-banner {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .pwa-install-banner {
+    left: 1rem;
+    right: 1rem;
+  }
+}
+

@@ -1,0 +1,62 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "resume": "Resume",
+    "contact": "Contact",
+    "hireMe": "Hire Me",
+    "viewProjects": "View Projects",
+    "yearsExperience": "Years Experience",
+    "clientsSatisfied": "Clients Satisfied",
+    "technologies": "Technologies",
+    "downloadResume": "Download Resume",
+    "sendMessage": "Send Message",
+    "loading": "Loading...",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+  "home": {
+    "title": "Frontend Developer",
+    "name": "Yuvraj Bagale",
+    "tagline": "Reacting with Design, Angular with Passion, Python with Logic | Creative Web Dev",
+    "summary": "Passionate Software Engineer with 3+ years of experience in crafting innovative solutions using HTML5, CSS3, and JavaScript. Specialized in building responsive user interfaces, cross-browser platforms, and large-scale web applications. Proficient in Agile methodology, GIT for version control, and Jira for defect tracking. Excited about leveraging technology to solve real-world challenges."
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Passionate Frontend Developer with expertise in creating beautiful, interactive web experiences",
+    "skills": "Skills & Expertise",
+    "experience": "Experience Timeline"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's discuss your next project",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Failed to send message. Please try again.",
+    "nameRequired": "Name is required",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email",
+    "subjectRequired": "Subject is required",
+    "messageRequired": "Message is required"
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "Showcasing my best work and creative solutions",
+    "viewDetails": "View Details",
+    "liveDemo": "Live Demo",
+    "github": "GitHub",
+    "technologies": "Technologies",
+    "features": "Features"
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}
+
