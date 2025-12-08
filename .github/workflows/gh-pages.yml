@@ -57,10 +57,10 @@ jobs:
           # Angular 17+ outputs to dist/<project>/browser; Angular 16 and earlier to dist/<project>
           if [ -d "$OUT/browser" ]; then
             echo "Found $OUT/browser (Angular 17+)"
-            echo "publish_dir=$OUT/browser" >> $GITHUB_ENV
+            echo "PUBLISH_DIR=$OUT/browser" >> $GITHUB_ENV
           elif [ -d "$OUT" ]; then
             echo "Using $OUT (Angular 16 or earlier)"
-            echo "publish_dir=$OUT" >> $GITHUB_ENV
+            echo "PUBLISH_DIR=$OUT" >> $GITHUB_ENV
           else
             echo "ERROR: Neither $OUT/browser nor $OUT found after build"
             exit 1
@@ -68,26 +68,28 @@ jobs:
 
       - name: Add SPA fallback (404.html)
         env:
-          PUBDIR: ${{ env.publish_dir }}
+          PUBDIR: ${{ env.PUBLISH_DIR }}
         run: |
           if [ -z "$PUBDIR" ]; then echo "PUBDIR is not set — cannot add 404.html"; exit 1; fi
           if [ -f "$PUBDIR/index.html" ]; then
             cp "$PUBDIR/index.html" "$PUBDIR/404.html"
             echo "Created $PUBDIR/404.html (SPA fallback)"
+            ls -lah "$PUBDIR/404.html"
           else
             echo "index.html not found in $PUBDIR — build may have failed"; exit 1
           fi
 
-      - name: Ensure repo docs (publish dir) exists
+      - name: Verify publish directory contents
         env:
-          PUBDIR: ${{ env.publish_dir }}
+          PUBDIR: ${{ env.PUBLISH_DIR }}
         run: |
-          echo "Publish dir: $PUBDIR"
+          echo "Contents of $PUBDIR:"
+          ls -la "$PUBDIR" | head -20
 
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.publish_dir }}
+          publish_dir: ${{ env.PUBLISH_DIR }}
           # default publish_branch is gh-pages; change to 'docs' if you prefer that
           publish_branch: gh-pages
