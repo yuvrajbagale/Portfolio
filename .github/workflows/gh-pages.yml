@@ -1,12 +1,10 @@
 name: Deploy Angular to GitHub Pages
 
-# run on push to main
 on:
   push:
     branches:
       - main
 
-# give workflow permission to write repository contents and pages
 permissions:
   contents: write
   pages: write
@@ -28,8 +26,23 @@ jobs:
       - name: Build (production)
         run: npm run build --if-present -- --configuration production --base-href "/Portfolio/"
 
+      - name: Detect dist folder
+        id: detect
+        run: |
+          echo "Contents of dist:"
+          ls -la dist || true
+          # prefer lowercase then uppercase then fallback to first folder
+          if [ -d "dist/portfolivo" ]; then
+            echo "publish_dir=dist/portfolivo" >> $GITHUB_OUTPUT
+          elif [ -d "dist/Portfolivo" ]; then
+            echo "publish_dir=dist/Portfolivo" >> $GITHUB_OUTPUT
+          else
+            FIRST=$(ls dist | head -n1)
+            echo "publish_dir=dist/$FIRST" >> $GITHUB_OUTPUT
+          fi
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/portfolio
+          publish_dir: ${{ steps.detect.outputs.publish_dir }}
