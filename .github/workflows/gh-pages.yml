@@ -1,24 +1,21 @@
 name: Deploy Angular to GitHub Pages
 
+# run on push to main
 on:
   push:
     branches:
       - main
 
+# give workflow permission to write repository contents and pages
 permissions:
-  contents: write # ensure the GITHUB_TOKEN can push
+  contents: write
   pages: write
-  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository (with full history & auth)
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: true
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,25 +28,8 @@ jobs:
       - name: Build (production)
         run: npm run build --if-present -- --configuration production --base-href "/Portfolio/"
 
-      - name: Verify publish_dir exists
-        run: |
-          echo "Listing dist folder:"
-          ls -la dist || true
-          ls -la dist/portfolivo || true
-          if [ ! -d "dist/portfolivo" ]; then
-            echo "ERROR: publish_dir dist/portfolivo not found"
-            exit 2
-          fi
-
-      - name: Configure git user for commit
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/portfolio
-          # optional: uncomment next line to force overwrite remote branch
-          # force_orphan: true
