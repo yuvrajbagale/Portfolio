@@ -1,0 +1,137 @@
+{
+  "configVersion": 1,
+  "timestamp": 1765436051182,
+  "index": "/Portfolio/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/Portfolio/chunk-6FKJ6XXA.js",
+        "/Portfolio/chunk-BC6UBDYC.js",
+        "/Portfolio/chunk-DZ67VH5O.js",
+        "/Portfolio/chunk-GLBFXOTV.js",
+        "/Portfolio/chunk-JOASAWVZ.js",
+        "/Portfolio/chunk-K4FEJ5RO.js",
+        "/Portfolio/chunk-KOTV4B7C.js",
+        "/Portfolio/chunk-M7THUCTD.js",
+        "/Portfolio/chunk-NIR2FOIX.js",
+        "/Portfolio/chunk-TOUXME6Q.js",
+        "/Portfolio/chunk-XM6C7CHR.js",
+        "/Portfolio/favicon.ico",
+        "/Portfolio/index.html",
+        "/Portfolio/main-KIXGSZNZ.js",
+        "/Portfolio/manifest.webmanifest",
+        "/Portfolio/polyfills-FFHMD2TL.js",
+        "/Portfolio/styles-3NSFYBPD.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/Portfolio/assets/i18n/en.json",
+        "/Portfolio/assets/i18n/hi.json",
+        "/Portfolio/assets/i18n/mr.json",
+        "/Portfolio/assets/icons/icon-128x128.png",
+        "/Portfolio/assets/icons/icon-144x144.png",
+        "/Portfolio/assets/icons/icon-152x152.png",
+        "/Portfolio/assets/icons/icon-192x192.png",
+        "/Portfolio/assets/icons/icon-384x384.png",
+        "/Portfolio/assets/icons/icon-512x512.png",
+        "/Portfolio/assets/icons/icon-72x72.png",
+        "/Portfolio/assets/icons/icon-96x96.png",
+        "/Portfolio/assets/images/README.md"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-cache",
+      "patterns": [
+        "https:\\/\\/api\\.github\\.com\\/.*"
+      ],
+      "strategy": "freshness",
+      "maxSize": 100,
+      "maxAge": 3600000,
+      "timeoutMs": 5000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    },
+    {
+      "name": "i18n-cache",
+      "patterns": [
+        "\\/assets\\/i18n\\/.*"
+      ],
+      "strategy": "performance",
+      "maxSize": 50,
+      "maxAge": 604800000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/Portfolio/assets/i18n/en.json": "6cf5385796c5b27b358c587f525a4727984a3872",
+    "/Portfolio/assets/i18n/hi.json": "5ed9c48a80c06c128d74358930db3ca1b0ef9231",
+    "/Portfolio/assets/i18n/mr.json": "9e8ac9ecace4db6500397608e5de8363172f9882",
+    "/Portfolio/assets/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/Portfolio/assets/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/Portfolio/assets/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/Portfolio/assets/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/Portfolio/assets/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/Portfolio/assets/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/Portfolio/assets/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/Portfolio/assets/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/Portfolio/assets/images/README.md": "96d28e758ba01f1d15fb2b00b680af3059e6d91a",
+    "/Portfolio/chunk-6FKJ6XXA.js": "25339e1cc6b2efbd6b16a5b8a05a5373830c6f5e",
+    "/Portfolio/chunk-BC6UBDYC.js": "0d5f6722e0e3ec00fc9f80f2073a3e05b57dad59",
+    "/Portfolio/chunk-DZ67VH5O.js": "ef777d9f14498e37f0c96988ce36c82bb2f2cac3",
+    "/Portfolio/chunk-GLBFXOTV.js": "8acbc2900141c7a38910f80e5a81baec6294c35e",
+    "/Portfolio/chunk-JOASAWVZ.js": "061ce5cedd8ed6db50318f2e962b3646c0021bf0",
+    "/Portfolio/chunk-K4FEJ5RO.js": "304cea6cd4d1190e3a463c59c2d8ea7f024a1627",
+    "/Portfolio/chunk-KOTV4B7C.js": "c645e8cd421c0371fbe458d2f5589c1d125050e4",
+    "/Portfolio/chunk-M7THUCTD.js": "af14f404117ec5bad80fdab50a92628f7cf060e0",
+    "/Portfolio/chunk-NIR2FOIX.js": "c5dc0f41432c803f40e1369c407a0c40b167aa4d",
+    "/Portfolio/chunk-TOUXME6Q.js": "131c25a592d64219fc7e4785c0cb99249df39ad5",
+    "/Portfolio/chunk-XM6C7CHR.js": "0e749c7e49cc777046de616fd2681dea254b2834",
+    "/Portfolio/favicon.ico": "12abdd31cf62e1aa0544a8ee68e9bddeef51ff5f",
+    "/Portfolio/index.html": "be28a068132169c31b28c7f37f6a0a28115e980d",
+    "/Portfolio/main-KIXGSZNZ.js": "a6c2a0a8c6fbbc64ae1d8cd0779e70eafff89a84",
+    "/Portfolio/manifest.webmanifest": "1862fac5b0d18f2ac3fb771b6f25f2583a16b787",
+    "/Portfolio/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
+    "/Portfolio/styles-3NSFYBPD.css": "b0d4d62065a45b6d7c81810c285b101e437091d9"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
