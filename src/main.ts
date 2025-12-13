@@ -1,5 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withHashLocation } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
@@ -7,7 +7,6 @@ import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { provideServiceWorker } from '@angular/service-worker';
 import { isDevMode } from '@angular/core';
 
@@ -27,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routes, withComponentInputBinding()),
+    provideRouter(routes, withComponentInputBinding(), withHashLocation()),
     provideAnimations(),
     provideHttpClient(),
     provideTranslateService({

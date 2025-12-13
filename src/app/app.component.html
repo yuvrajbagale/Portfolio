@@ -1,22 +1,22 @@
 <div class="min-h-screen flex flex-col">
   <!-- 3D Background -->
-  <app-three-background
+  <!-- <app-three-background
     [particleCount]="800"
     [particleColor]="threeColor"
     [enableRotation]="true"
     [animationSpeed]="0.8"
-  ></app-three-background>
+  ></app-three-background> -->
 
   <!-- Spider Web Cursor Animation -->
   <app-spider-web-cursor
-    [particleCount]="60"
-    [maxDistance]="180"
-    [cursorForce]="0.12"
-    [speed]="0.6"
+    [particleCount]="600"
+    [maxDistance]="100"
+    [cursorForce]="0.1"
+    [speed]="0.1"
     [connectToCursor]="true"
     [pauseOnScroll]="false"
     [enableGlow]="true"
-    [particleSize]="2.5"
+    [particleSize]="1"
     theme="auto"
     [enableTrails]="true"
     [enableGradient]="true"
@@ -24,12 +24,14 @@
   ></app-spider-web-cursor>
 
   <app-header></app-header>
-  <main [@routeAnimations]="prepareRoute(outlet)" class="flex-grow relative z-10">
+  <main
+    [@routeAnimations]="prepareRoute(outlet)"
+    class="flex-grow relative z-10"
+  >
     <router-outlet #outlet="outlet"></router-outlet>
   </main>
   <app-footer></app-footer>
-  
+
   <!-- PWA Install Prompt & Offline Indicator -->
   <app-pwa-install></app-pwa-install>
 </div>
-
