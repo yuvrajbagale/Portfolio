@@ -200,7 +200,7 @@ This project is private and proprietary.
 ## Contact
 
 Yuvraj Bagale
-- Email: yuvraj@example.com
+- Email: yuvrajbagale123@gmail.com
 - Location: India
 
 ---
